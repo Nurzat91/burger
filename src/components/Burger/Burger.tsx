@@ -1,5 +1,11 @@
-import React from 'react';
-const Burger = () => {
+import React, { useState } from 'react';
+import {Ingredients, Ingredient} from '../../components/Ingredients/Ingredients';
+
+const BURGER_PRICE = 30;
+const Burger: React.FC = () => {
+  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+
+
   return (
     <div className="Burger">
       <div className="BreadTop">
