@@ -68,9 +68,8 @@ function App() {
       <div>
         <h2>Ingredients:</h2>
         {INGREDIENTS.map((ingredient) => (
-          <div className="BurgersRight">
+          <div className="BurgersRight" key={ingredient.id}>
             <div
-              key={ingredient.id}
               className="Ingredient"
               onClick={() => addIngredient(ingredient)}
             >
