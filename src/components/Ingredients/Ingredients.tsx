@@ -1,20 +1,26 @@
-import meatImage from '../../assets/meat.png';
-import cheeseImage from '../../assets/cheese.png';
-import saladImage from '../../assets/salad.png';
-import baconImage from '../../assets/bacon.png';
+import React from 'react';
+import btnDelete from "../../assets/btnDelete.svg";
 
-interface Ingredient {
-  name: string;
-  price: number;
-  image: string;
+interface IngredientProps {
+  ingredient: Ingredient;
+  onAdd: () => void;
+  onRemove: () => void;
+  ingredients: () => void;
 }
-const Ingredients = () => {
-  const INGREDIENTS: Ingredient[] = [
-    {name: 'Meat', price: 80, image: meatImage},
-    {name: 'Cheese', price: 50, image: cheeseImage},
-    {name: 'Salad', price: 10, image: saladImage},
-    {name: 'Bacon', price: 60, image: baconImage},
-  ];
 
+const IngredientItem: React.FC<IngredientProps> = ({ ingredient, onAdd, onRemove, ingredients }) => {
+  return (
+    <>
+        <div key={ingredient.id} className="Ingredient" onClick={() => onAdd(ingredient)}>
+            <img src={ingredient.image} alt={ingredient.name} className="imgIngredients" />
+            {ingredient.name}
+            <span className="AmountOfIngredient">x{ingredients.find((i) => i.name === ingredient.name)?.count || 0}</span>
+        </div>
+        <span onClick={() => onRemove(ingredient.id)}>
+            <img src={btnDelete} alt="btnDelete" />
+        </span>
+    </>
+  );
 };
-export default Ingredients;
+
+export default IngredientItem;
